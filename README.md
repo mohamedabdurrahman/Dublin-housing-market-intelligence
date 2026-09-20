@@ -1,7 +1,7 @@
 # Dublin Housing Market Intelligence
 
 ## Executive Summary (BLUF)
-![Dublin Housing Trends](assets/dublin_housing_trends.png)
+![Dublin Housing Trends](assets/dublin_housing_trends.png) 
 
 **Bottom line:** Dublin planning permissions are an early indicator of future supply, while completions are the delivered stock. The two series should not be expected to move together in the same quarter: permissions must pass through design, finance, procurement, construction and certification before a home is completed. This pipeline makes that lead-time relationship visible using the latest CSO PxStat data for Dublin City, Fingal, South Dublin and Dún Laoghaire-Rathdown.
 
