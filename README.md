@@ -36,7 +36,7 @@ These are **portfolio-level policy risks, not claims that every scheme in either
 | Residential property price index | `HPM06` |
 | Planning permissions | `BHQ12` |
 
-The source is the [CSO PxStat API](https://www.cso.ie/en/csolatestnews/pressreleases/). The script accepts JSON-stat or CSV responses because PxStat output formats can vary across API deployments.
+The data source is the [CSO PxStat API](https://data.cso.ie/). The pipeline ingests official JSON-stat or CSV datasets directly from CSO Ireland's open data platform.
 
 ## Run Locally
 
