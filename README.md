@@ -1,6 +1,7 @@
 # Dublin Housing Market Intelligence
 
 ## Executive Summary (BLUF)
+![Dublin Housing Trends](assets/dublin_housing_trends.png)
 
 **Bottom line:** Dublin planning permissions are an early indicator of future supply, while completions are the delivered stock. The two series should not be expected to move together in the same quarter: permissions must pass through design, finance, procurement, construction and certification before a home is completed. This pipeline makes that lead-time relationship visible using the latest CSO PxStat data for Dublin City, Fingal, South Dublin and Dún Laoghaire-Rathdown.
 
@@ -48,17 +49,12 @@ python pipeline.py
 
 The API root can be overridden for testing or a proxy with `CSO_API_ROOT`.
 
-## GitHub Publication
+## Repository Structure
+- `pipeline.py` — Automated Python ingestion pipeline for CSO PxStat API.
+- `transform_housing_data.sql` — Production CTE models calculating YoY growth & local authority delivery shares.
+- `POWER_BI_LAYOUT.md` — Complete 3-page executive dashboard architecture & DAX metrics.
+- `data/dublin_housing_summary.csv` — Processed dataset combining completions, permissions, and price indices.
+- `assets/dublin_housing_trends.png` — Dublin-wide delivery vs. permission trend visualization.
 
-Replace `YOUR-USERNAME` and `YOUR-REPOSITORY` with your GitHub values:
-
-```powershell
-git init
-git add pipeline.py README.md requirements.txt .gitignore transform_housing_data.sql POWER_BI_LAYOUT.md data/dublin_housing_summary.csv assets/dublin_housing_trends.png
-git commit -m "Build Dublin housing market intelligence pipeline"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-git push -u origin main
 ```
 
-The final `git add` command is explicit so generated portfolio artifacts are included in the first push.
