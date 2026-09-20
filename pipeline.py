@@ -205,20 +205,37 @@ def save_outputs(summary: pd.DataFrame) -> None:
     trends = summary.groupby("period", as_index=False)[
         ["completions", "planning_permissions"]
     ].sum(min_count=1).sort_values("period")
-    fig, axis = plt.subplots(figsize=(11, 6), dpi=160)
-    axis.plot(trends["period"], trends["completions"], marker="o", label="Completions")
+    fig, axis = plt.subplots(figsize=(11, 6), dpi=300)
+    quarter_positions = range(len(trends))
     axis.plot(
-        trends["period"], trends["planning_permissions"], marker="o",
+        quarter_positions,
+        trends["completions"],
+        color="#005A9C",
+        linewidth=2.2,
+        marker="o",
+        label="Completions",
+    )
+    axis.plot(
+        quarter_positions,
+        trends["planning_permissions"],
+        color="#E65100",
+        linewidth=2.2,
+        marker="o",
         label="Planning permissions",
     )
+    tick_positions = list(range(0, len(trends), 2))
+    axis.set_xticks(tick_positions, trends["period"].iloc[tick_positions], rotation=0)
     axis.set_title("Dublin housing pipeline: permissions and completions")
     axis.set_xlabel("CSO reporting period")
     axis.set_ylabel("Units")
-    axis.grid(axis="y", alpha=0.25)
+    axis.grid(axis="y", alpha=0.25, linewidth=0.8)
+    axis.spines["top"].set_visible(False)
+    axis.spines["right"].set_visible(False)
     axis.legend(frameon=False)
-    fig.autofmt_xdate()
     fig.tight_layout()
-    fig.savefig(ASSETS_DIR / "dublin_housing_trends.png", bbox_inches="tight")
+    fig.savefig(
+        ASSETS_DIR / "dublin_housing_trends.png", dpi=300, bbox_inches="tight"
+    )
     plt.close(fig)
 
 
