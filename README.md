@@ -1,7 +1,7 @@
 # Dublin Housing Market Intelligence
 
 ## Executive Summary (BLUF)
-![Dublin Housing Trends](assets/dublin_housing_trends.png) 
+![C-Suite Executive Overview](assets/csuite_landing_page.png)
 
 **Bottom line:** Dublin planning permissions are an early indicator of future supply, while completions are the delivered stock. The two series should not be expected to move together in the same quarter: permissions must pass through design, finance, procurement, construction and certification before a home is completed. This pipeline makes that lead-time relationship visible using the latest CSO PxStat data for Dublin City, Fingal, South Dublin and Dún Laoghaire-Rathdown.
 
@@ -23,10 +23,14 @@ These are **portfolio-level policy risks, not claims that every scheme in either
 
 ## Outputs
 
-- `data/dublin_housing_summary.csv`: tidy authority-period data containing completions, planning permissions and the HPM06 Dublin residential property price index where reporting periods align.
-- `assets/dublin_housing_trends.png`: Dublin-wide line chart comparing completions with planning permissions.
-- `transform_housing_data.sql`: production-style CTE model with `LAG()` YoY growth and local-authority delivery shares.
-- `POWER_BI_LAYOUT.md`: three-page executive dashboard specification.
+## Outputs
+
+- `data/dublin_housing_summary.csv`: Tidy authority-period data containing raw completions, planning permissions, and price indices.
+- `data/fact_housing_transformed.csv`: Transformed 2020–2026 analytical fact table with annual metrics, YoY growth, delivery share, and lead times.
+- `data/dim_infrastructure_risk.csv`: Infrastructure risk mapping table for Uisce Éireann (water) and ESB Networks (grid) bottlenecks.
+- `assets/csuite_landing_page.png`: Executive dashboard screenshot for reporting layer visual representation.
+- `transform_housing_data.sql`: Production CTE model calculating windowed YoY growth and local authority delivery shares.
+- `POWER_BI_LAYOUT.md`: Three-page executive dashboard architecture & DAX metrics specification.
 
 ## Data Sources
 
@@ -50,11 +54,12 @@ python pipeline.py
 The API root can be overridden for testing or a proxy with `CSO_API_ROOT`.
 
 ## Repository Structure
-- `pipeline.py` — Automated Python ingestion pipeline for CSO PxStat API.
-- `transform_housing_data.sql` — Production CTE models calculating YoY growth & local authority delivery shares.
-- `POWER_BI_LAYOUT.md` — Complete 3-page executive dashboard architecture & DAX metrics.
-- `data/dublin_housing_summary.csv` — Processed dataset combining completions, permissions, and price indices.
-- `assets/dublin_housing_trends.png` — Dublin-wide delivery vs. permission trend visualization.
 
-```
+- `pipeline.py` — Automated Python ingestion script interacting with the CSO PxStat API.
+- `transform_housing_data.sql` — DuckDB SQL models calculating YoY growth & local authority delivery shares.
+- `run_pipeline.py` — Python runner executing DuckDB transformations and exporting transformed CSV outputs.
+- `POWER_BI_LAYOUT.md` — Complete 3-page executive dashboard architecture & DAX metrics engine.
+- `requirements.txt` — Python project dependencies (`duckdb`, `pandas`, `requests`).
+- `data/` — Output directory containing raw and transformed analytical datasets.
+- `assets/` — Visual assets and executive dashboard screenshots.
 
